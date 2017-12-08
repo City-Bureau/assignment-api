@@ -18,7 +18,7 @@ CORS(app)
 
 @app.route('/api/events')
 def events():
-    events_table = Airtable(AIRTABLE_APP, 'EventsTest', api_key=AIRTABLE_API_KEY)
+    events_table = Airtable(AIRTABLE_APP, 'Meetings', api_key=AIRTABLE_API_KEY)
 
     events = events_table.search('assignment_status', 'Open Assignment', fields=['id', 'assignment_status', 'name', 'agency_name', 'classification', 'description', 'start_time', 'end_time', 'location_name', 'status'], sort="start_time")
 
