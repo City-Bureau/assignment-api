@@ -1,4 +1,4 @@
-import os
+from sys import stdout
 from os import environ, path
 import logging
 
@@ -17,7 +17,7 @@ AIRTABLE_API_KEY = environ['AIRTABLE_API_KEY']
 
 app = Flask(__name__)
 CORS(app)
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.addHandler(logging.StreamHandler(stdout))
 app.logger.setLevel(logging.INFO)
 
 @app.route('/api/events')
