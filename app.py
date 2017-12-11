@@ -1,9 +1,11 @@
 import os
 from os import environ, path
+import logging
 
 from flask import Flask, jsonify
 from flask_cors import CORS
 from airtable import Airtable
+
 
 if environ.get('ENV') != 'production':
     from dotenv import load_dotenv
@@ -15,6 +17,8 @@ AIRTABLE_API_KEY = environ['AIRTABLE_API_KEY']
 
 app = Flask(__name__)
 CORS(app)
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.INFO)
 
 @app.route('/api/events')
 def events():
