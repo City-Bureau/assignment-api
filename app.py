@@ -5,21 +5,27 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 from airtable import Airtable
 
-
-if environ.get('ENV') != 'production':
+ENV = environ.get('ENV')
+if ENV != 'production':
     from dotenv import load_dotenv
     dotenv_path = path.join(path.dirname(__file__), '.env')
     load_dotenv(dotenv_path)
 
 AIRTABLE_APP = environ['AIRTABLE_APP']
 AIRTABLE_API_KEY = environ['AIRTABLE_API_KEY']
+EVENTS_TABLE = environ['EVENTS_TABLE']
 
 app = Flask(__name__)
 CORS(app)
 
 @app.route('/api/events')
 def events():
-    events_table = Airtable(AIRTABLE_APP, 'Meetings', api_key=AIRTABLE_API_KEY)
+    if ENV != 'production':
+        with open('fixtures/events.json', 'r') as json_file:
+            json = json_file.read()
+        return json
+
+    events_table = Airtable(AIRTABLE_APP, EVENTS_TABLE, api_key=AIRTABLE_API_KEY)
 
     fields = [
       'id', 'assignment_status', 'assignment', 'name', 'agency_name', 'classification',

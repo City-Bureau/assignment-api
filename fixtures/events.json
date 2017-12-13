@@ -1,0 +1,58 @@
+
+[
+  {
+    "createdTime": "2017-11-21T12:54:25.000Z", 
+    "fields": {
+      "agency_name": "Cook County Government", 
+      "assignment": [
+        "Audio record meeting"
+      ], 
+      "assignment_status": "Open Assignment", 
+      "classification": "Committee Meeting", 
+      "description": "Committee meeting\u00a0of the Cook County Board of Commissioners.", 
+      "id": "CookCounty:FinanceSubcommitteeonWorkers'Compensation2017-12-12T12:30:00-06:00", 
+      "location_name": "118 N. Clark St. County Board Room - Rm 569 Chicago , IL  60602", 
+      "name": "Cook County: Finance Subcommittee on Workers' Compensation", 
+      "start_time": "2017-12-12T18:30:00.000Z", 
+      "status": "tentative"
+    }, 
+    "id": "recdz7JY3N4LmenHE"
+  }, 
+  {
+    "createdTime": "2017-11-30T06:57:12.000Z", 
+    "fields": {
+      "agency_name": "Chicago Police Department", 
+      "assignment": [
+        "Audio record meeting"
+      ], 
+      "assignment_status": "Open Assignment", 
+      "classification": "CAPS community event", 
+      "description": "Community Meeting to address crime issues on the beat, develop strategies to solve problems, and dissemination of crime prevention information.", 
+      "end_time": "2018-01-18T02:00:00.000Z", 
+      "id": "chi_police/201801171900/19/beat_1921_beat_1922_beat_1931_community_meeting", 
+      "location_name": "Police Auditorium in Area North, 2452 W. Belmont", 
+      "name": "Beat 1921, Beat 1922, & Beat 1931 Community Meeting", 
+      "start_time": "2018-01-18T01:00:00.000Z", 
+      "status": "confirmed"
+    }, 
+    "id": "recVJDIK1vYOS1hEp"
+  }, 
+  {
+    "createdTime": "2017-11-21T18:55:37.000Z", 
+    "fields": {
+      "agency_name": "Illinois Department of Public Health", 
+      "assignment": [
+        "Live-tweet meeting"
+      ], 
+      "assignment_status": "Open Assignment", 
+      "classification": "Not classified", 
+      "description": "Locations of meeting:\u00a0 Illinois Hospital Association, 1151 E. Warrenville Road, Naperville, IL 60566 and Illinois Hospital Association, 700 South 2nd Street, Springfield, IL 62704\nContact for the meeting @\nIDPH:\u00a0 Evelyn Lyons, 708-327-2556,", 
+      "end_time": "2018-03-08T18:00:00.000Z", 
+      "id": "il_pubhealth/201803081000/17396/ems_for_children_advisory_council", 
+      "name": "EMS for Children Advisory Council", 
+      "start_time": "2018-03-08T16:00:00.000Z", 
+      "status": "tentative"
+    }, 
+    "id": "recDiACARxXroYDJX"
+  }
+]
