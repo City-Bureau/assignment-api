@@ -20,6 +20,10 @@ APPLICATIONS_TABLE = environ['APPLICATIONS_TABLE']
 app = Flask(__name__)
 CORS(app)
 
+if ENV == 'production':
+    from raven.contrib.flask import Sentry
+    sentry = Sentry(app, dsn=environ['SENTRY_DSN'])
+
 @app.route('/api/events', methods=['GET'])
 def events():
     if ENV != 'production':
