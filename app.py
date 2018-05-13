@@ -35,10 +35,21 @@ def events():
 
     fields = [
         'id', 'assignment_status', 'assignment', 'name', 'agency_name', 'classification',
-        'description', 'start_time', 'end_time', 'location_address', 'status', 'community_area'
+        'description', 'start_time', 'end_time', 'location_address', 'status', 'community_area',
+        'Custom Start Time', 'Custom End Time'
     ]
     event_rows = events_table.search('assignment_status', 'Open Assignment',
                                      fields=fields, sort="start_time")
+
+    # handle custom start and end times :/
+    for row in event_rows:
+        fields = row['fields']
+        if 'Custom Start Time' in fields:
+            fields['start_time'] = fields['Custom Start Time']
+            del fields['Custom Start Time']
+        if 'Custom End Time' in fields:
+            fields['end_time'] = fields['Custom End Time']
+            del fields['Custom End Time']
 
     return jsonify(event_rows)
 
