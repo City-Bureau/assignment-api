@@ -14,7 +14,8 @@
       "location_name": "118 N. Clark St. County Board Room - Rm 569 Chicago , IL  60602", 
       "name": "Cook County: Finance Subcommittee on Workers' Compensation", 
       "start_time": "2017-12-12T18:30:00.000Z", 
-      "status": "tentative"
+      "status": "tentative",
+      "url": "http://example.com"
     }, 
     "id": "recdz7JY3N4LmenHE"
   }, 
@@ -29,7 +30,8 @@
       "assignment_status": "Open Assignment", 
       "description": "Public meeting for COPA", 
       "location_name": "City Hall \u2014 Room 501A", 
-      "start_time": "2017-12-20T14:00:00.000Z"
+      "start_time": "2017-12-20T14:00:00.000Z",
+      "url": "http://example.com"
     }, 
     "id": "recEim7spuopsRHFW"
   }, 

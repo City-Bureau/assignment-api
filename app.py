@@ -26,21 +26,22 @@ if ENV == 'production':
 
 @app.route('/api/events', methods=['GET'])
 def events():
-    if ENV != 'production':
-        with open('fixtures/events.json', 'r') as json_file:
-            json = json_file.read()
-        return json
+    # if ENV != 'production':
+    #     with open('fixtures/events.json', 'r') as json_file:
+    #         json = json_file.read()
+    #     return json
 
     events_table = Airtable(AIRTABLE_APP, EVENTS_TABLE, api_key=AIRTABLE_API_KEY)
 
     fields = [
         'id', 'assignment_status', 'assignment', 'name', 'agency_name', 'classification',
         'description', 'start_time', 'end_time', 'location_address', 'status', 'community_area',
-        'Custom Start Time', 'Custom End Time'
+        'Custom Start Time', 'Custom End Time', 'url'
     ]
     event_rows = events_table.search('assignment_status', 'Open Assignment',
                                      fields=fields, sort="start_time")
 
+    print(event_rows)
     # handle custom start and end times :/
     for row in event_rows:
         fields = row['fields']
