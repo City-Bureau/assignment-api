@@ -34,25 +34,37 @@ def events():
     events_table = Airtable(AIRTABLE_APP, EVENTS_TABLE, api_key=AIRTABLE_API_KEY)
 
     fields = [
-        'id', 'assignment_status', 'assignment', 'name', 'agency_name', 'classification',
-        'description', 'start_time', 'end_time', 'location_address', 'status', 'community_area',
-        'Custom Start Time', 'Custom End Time', 'url'
+        'Status', 'Assignment', 'Name', 'Agency', 'Type', 'Address',
+        'Description', 'Start Date and Time', 'URL', 'Phone',
     ]
-    event_rows = events_table.search('assignment_status', 'Open Assignment',
-                                     fields=fields, sort="start_time")
 
-    print(event_rows)
-    # handle custom start and end times :/
-    for row in event_rows:
-        fields = row['fields']
-        if 'Custom Start Time' in fields:
-            fields['start_time'] = fields['Custom Start Time']
-            del fields['Custom Start Time']
-        if 'Custom End Time' in fields:
-            fields['end_time'] = fields['Custom End Time']
-            del fields['Custom End Time']
+    try:
+        event_rows = events_table.search('Status', 'Open',
+                                        fields=fields, sort="Start Date and Time")
 
-    return jsonify(event_rows)
+        events = [convert_fields(row) for row in event_rows]
+        return jsonify(events)
+    except HTTPError as error:
+        print(error)
+        return error.response.text
+
+
+def convert_fields(row):
+    print(row)
+    fields = row['fields']
+    return {
+        'id': row['id'],
+        'fields': {
+            'name': fields.get('Name', ''),
+            'agency_name': fields.get('Agency', ''),
+            'assignment': fields.get('Assignment', []),
+            'description': fields.get('Description', ''),
+            'location_address': fields.get('Address', ''),
+            'start_time': fields.get('Start Date and Time', ''),
+            'url': fields.get('URL', ''),
+            # end_time, community_area
+        },
+    }
 
 @app.route('/api/applications', methods=['POST'])
 def applications():
@@ -61,8 +73,8 @@ def applications():
     j = request.json
     for event in j['event']:
         fields = {
-            'applied_name': j['applied_name'],
-            'email': j['email'],
+            'Name': j['applied_name'],
+            'Email': j['email'],
             'Event': [event['id']],
             'Agree to Attend': j['agree_to_attend'],
             'Agree to Rate': j['agree_to_rate'],
